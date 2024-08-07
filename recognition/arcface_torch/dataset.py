@@ -26,6 +26,7 @@ def get_dataloader(
     num_workers = 2,
     ) -> Iterable:
 
+    print(root_dir)
     rec = os.path.join(root_dir, 'train.rec')
     idx = os.path.join(root_dir, 'train.idx')
     train_set = None
