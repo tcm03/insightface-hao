@@ -5,15 +5,15 @@ from easydict import EasyDict as edict
 # mount -t tmpfs -o size=140G  tmpfs /train_tmp
 
 config = edict()
-config.margin_list = (1.0, 0.5, 0.0)
-config.network = "r100"
+config.margin_list = (1.0, 0.0, 0.4)
+config.network = "mbf"
 config.resume = False
 config.output = "/kaggle/working/"
 config.embedding_size = 512
 config.sample_rate = 1.0
 config.fp16 = True
 config.momentum = 0.9
-config.weight_decay = 5e-4
+config.weight_decay = 1e-4
 config.batch_size = 32
 config.lr = 0.1
 config.verbose = 2000
