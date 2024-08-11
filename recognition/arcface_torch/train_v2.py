@@ -179,7 +179,7 @@ def main(args):
             train_loader.sampler.set_epoch(epoch)
         for _, (img, local_labels) in enumerate(train_loader):
             global_step += 1
-            print('Image: ', img)
+            print('Image: ', img.detach().cpu().numpy().shape)
             local_embeddings = backbone(img)
             loss: torch.Tensor = module_partial_fc(local_embeddings, local_labels)
 
