@@ -18,6 +18,7 @@ from utils.utils_config import get_config
 from utils.utils_distributed_sampler import setup_seed
 from utils.utils_logging import AverageMeter, init_logging
 from torch.distributed.algorithms.ddp_comm_hooks.default_hooks import fp16_compress_hook
+import torch.nn.functional as F
 
 assert torch.__version__ >= "1.12.0", "In order to enjoy the features of the new torch, \
 we have upgraded the torch to 1.12.0. torch before than 1.12.0 may not work in the future."
@@ -180,6 +181,8 @@ def main(args):
         for _, (img, local_labels) in enumerate(train_loader):
             global_step += 1
             print('Image: ', img.detach().cpu().numpy().shape)
+            img = F.interpolate(img, size=(112, 112), mode='bilinear', align_corners=False)
+            print('Image Resized: ', img.detach().cpu().numpy().shape)
             local_embeddings = backbone(img)
             loss: torch.Tensor = module_partial_fc(local_embeddings, local_labels)
 
