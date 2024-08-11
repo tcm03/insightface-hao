@@ -15,8 +15,8 @@ config.sample_rate = 1.0
 config.fp16 = True
 config.momentum = 0.9
 config.weight_decay = 1e-4
-# config.batch_size =
-config.batch_size = 128
+config.batch_size = 32
+# config.batch_size = 128
 
 # config.lr = 0.1
 config.lr = 0.02
