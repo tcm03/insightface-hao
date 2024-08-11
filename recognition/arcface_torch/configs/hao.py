@@ -15,8 +15,12 @@ config.sample_rate = 1.0
 config.fp16 = True
 config.momentum = 0.9
 config.weight_decay = 1e-4
-config.batch_size = 32
-config.lr = 0.1
+# config.batch_size =
+config.batch_size = 128
+
+# config.lr = 0.1
+config.lr = 0.02
+
 config.verbose = 2000
 config.dali = False
 
@@ -27,4 +31,4 @@ config.num_classes = 10575
 config.num_image = 257326
 config.num_epoch = 20
 config.warmup_epoch = 0
-config.val_targets = ['lfw', 'cfp_fp', "agedb_30"]
+config.val_targets = ["lfw", "cfp_fp", "agedb_30"]
