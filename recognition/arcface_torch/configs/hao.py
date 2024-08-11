@@ -19,7 +19,7 @@ config.batch_size = 32
 # config.batch_size = 128
 
 # config.lr = 0.1
-config.lr = 0.02
+config.lr = 0.05
 
 config.verbose = 2000
 config.dali = False
