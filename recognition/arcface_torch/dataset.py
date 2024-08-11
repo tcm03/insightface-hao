@@ -53,7 +53,6 @@ def get_dataloader(
         return dali_data_iter(
             batch_size=batch_size, rec_file=rec, idx_file=idx,
             num_threads=2, local_rank=local_rank, dali_aug=dali_aug)
-    print(train_set)
     rank, world_size = get_dist_info()
     train_sampler = DistributedSampler(
         train_set, num_replicas=world_size, rank=rank, shuffle=True, seed=seed)
