@@ -7,6 +7,7 @@ import numpy as np
 from pathlib import Path
 from numpy.linalg import norm
 from sklearn.metrics import accuracy_score
+from backbones import get_model
 
 # Cosine similarity function
 def cosine_similarity(embedding1, embedding2):
