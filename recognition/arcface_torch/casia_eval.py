@@ -67,6 +67,7 @@ def batch_inference(weight, model_name, test_dir):
     # Loop over the test directory, process all images in the subfolders
     for subdir in Path(test_dir).iterdir():
         if subdir.is_dir():  # Check if it's a subfolder
+            print(f'Processing subdirectory {subdir.name}')
             if subdir.name not in label_map:
                 label_map[subdir.name] = current_label
                 current_label += 1
