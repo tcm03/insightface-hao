@@ -98,6 +98,8 @@ if __name__ == "__main__":
     # Perform batch inference and get embeddings and labels
     embeddings, labels = batch_inference(args.weight, args.network, args.test_dir)
 
+    print(f'Number of processed images: {len(embeddings)}')
+
     # Compute verification accuracy
     accuracy = compute_verification_accuracy(embeddings, labels, threshold=0.5, num_pairs=10000)
     print(f"Verification Accuracy: {accuracy * 100:.2f}%")
