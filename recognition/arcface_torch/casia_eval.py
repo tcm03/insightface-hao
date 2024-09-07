@@ -14,7 +14,7 @@ def cosine_similarity(embedding1, embedding2):
     return np.dot(embedding1, embedding2) / (norm(embedding1) * norm(embedding2))
 
 # Generate pairs of images (positive and negative pairs)
-def generate_pairs(embeddings, labels, num_pairs=1000):
+def generate_pairs(embeddings, labels, num_pairs=10000):
     positive_pairs = []
     negative_pairs = []
     identities = list(set(labels))
@@ -35,7 +35,7 @@ def generate_pairs(embeddings, labels, num_pairs=1000):
     return positive_pairs + negative_pairs
 
 # Compute verification accuracy
-def compute_verification_accuracy(embeddings, labels, threshold=0.5, num_pairs=1000):
+def compute_verification_accuracy(embeddings, labels, threshold=0.5, num_pairs=10000):
     pairs = generate_pairs(embeddings, labels, num_pairs)
     y_true = []
     y_pred = []
@@ -99,5 +99,5 @@ if __name__ == "__main__":
     embeddings, labels = batch_inference(args.weight, args.network, args.test_dir)
 
     # Compute verification accuracy
-    accuracy = compute_verification_accuracy(embeddings, labels, threshold=0.5, num_pairs=1000)
+    accuracy = compute_verification_accuracy(embeddings, labels, threshold=0.5, num_pairs=10000)
     print(f"Verification Accuracy: {accuracy * 100:.2f}%")
