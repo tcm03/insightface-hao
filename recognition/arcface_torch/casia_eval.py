@@ -54,7 +54,7 @@ def compute_verification_accuracy(embeddings, labels, threshold=0.5, num_pairs=1
 @torch.no_grad()
 def batch_inference(weight, model_name, test_dir):
     # Load the model architecture and the saved weights
-    net = get_model(model_name, fp16=False)
+    net = get_model(model_name, fp16=False).cuda()
     net.load_state_dict(torch.load(weight, map_location=torch.device('cpu')))
     net.eval()
 
@@ -77,7 +77,7 @@ def batch_inference(weight, model_name, test_dir):
                     img = cv2.imread(str(img_path))
                     img = cv2.resize(img, (112, 112))
                     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-                    img = torch.from_numpy(img).permute(2, 0, 1).unsqueeze(0).float()
+                    img = torch.from_numpy(img).permute(2, 0, 1).unsqueeze(0).float().cuda()
                     img.div_(255).sub_(0.5).div_(0.5)  # Normalize the image
 
                     # Get the embedding from the model
